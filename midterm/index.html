@@ -1,1 +1,76 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>User Interaction Demo</title>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script>
+    window.onload = function() {
+        AFRAME.registerComponent('event-listener', {
+            init: function () {
+                this.audio = document.querySelector("#roar");
 
+                this.el.addEventListener('click', function (e) {
+		
+                    let phoenix_bird = document.querySelector('#phoenix_bird-model')
+		   phoenix_bird.setAttribute('animation-mixer', "clip: Scene; loop: once;");
+			
+                  console.log(e)
+                }.bind(this));
+		
+                this.el.addEventListener('mouseenter', function (e) {
+                    console.log(e)
+                }.bind(this));
+		    
+		 this.el.addEventListener('mouseleave', function (e) {
+			 console.log(e)
+                }.bind(this));
+		 
+		
+                this.el.addEventListener('touchmove', function (e) {
+                    //this.audio.play();
+			
+                  console.log(e)
+                }.bind(this));
+                this.el.addEventListener('touchstart', function (e) {
+		
+                    let phoenix_bird = document.querySelector('#phoenix_bird')
+		  phoenix_bird.setAttribute('animation-mixer', "clip: Scene; loop: once;");
+			console.log(e)
+                }.bind(this));
+		    
+		 this.el.addEventListener('touchend', function (e) {
+			 console.log(e)
+                }.bind(this));
+		    
+		
+                this.el.addEventListener('animation-finished', function (e) {
+			 console.log(e)
+                    let phoenix_bird = document.querySelector('#phoenix_bird-model')
+		    phoenix_bird.removeAttribute('animation-mixer');
+                }.bind(this));
+		
+            }
+        });
+    };
+</script>
+  </head>
+
+  <body style="margin: 0; overflow: hidden;">
+    <a-scene renderer="colorManagement: true">
+       <a-assets>
+        <a-asset-item id="phoenix_bird" response-type="arraybuffer" src="./phoenix_bird.glb"></a-asset-item>
+      </a-assets>
+      <a-entity event-listener id="phoenix_bird-model"  
+        gltf-model="#phoenix_bird" 
+        scale=".5 .5 .5" 
+        position = "0 0 -5" 
+        rotation="0 0 0" 
+      >
+      </a-entity>
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
+      <a-entity cursor="fuse: true; fuseTimeout: 500"></a-entity>
+    </a-scene>
+  </body>
+</html>
