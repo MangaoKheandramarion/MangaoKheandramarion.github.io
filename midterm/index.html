@@ -14,7 +14,7 @@
 
                 this.el.addEventListener('click', function (e) {
 		
-                    let bird = document.querySelector('#phoenix_bird-model')
+                    let bird = document.querySelector('#Phoenix_bird-model')
 		    bird.setAttribute('animation-mixer', "clip: Take 001; loop: once;");
                     this.audio.play();
 			
@@ -37,7 +37,7 @@
                 }.bind(this));
                 this.el.addEventListener('touchstart', function (e) {
 		
-                    let bird = document.querySelector('#phoenix_bird-model')
+                    let bird = document.querySelector('#Phoenix_bird-model')
 		    bird.setAttribute('animation-mixer', "clip: Take 001; loop: once;");
                     this.audio.play();
 			console.log(e)
@@ -50,7 +50,7 @@
 		
                 this.el.addEventListener('animation-finished', function (e) {
 			 console.log(e)
-                    let bird = document.querySelector('#phoenix_bird-model')
+                    let bird = document.querySelector('#Phoenix_bird-model')
 		    bird.removeAttribute('animation-mixer');
                 }.bind(this));
 		
@@ -63,11 +63,11 @@
   <body style="margin: 0; overflow: hidden;">
     <a-scene renderer="colorManagement: true">
        <a-assets>
-        <a-asset-item id="phoenix_bird" response-type="arraybuffer" src="./phoenix_bird.glb"></a-asset-item>
+        <a-asset-item id="Phoenix_bird" response-type="arraybuffer" src="./Phoenix_bird.glb"></a-asset-item>
         <audio id="roar" src="./roar.mp3"></audio>
       </a-assets>
-      <a-entity event-listener id="phoenix_bird-model"  
-        gltf-model="#phoenix_bird" 
+      <a-entity event-listener id="Phoenix_bird-model"  
+        gltf-model="#Phoenix_bird" 
         scale=".5 .5 .5" 
         position = "0 0 -5" 
         rotation="0 0 0" 
